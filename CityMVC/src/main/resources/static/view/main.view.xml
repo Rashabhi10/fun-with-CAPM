@@ -1,0 +1,98 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:t="sap.ui.table"
+	xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core"
+	controllerName="demo.controller.main">
+	<Page title="Welcome to My App">
+
+		<Toolbar>
+			<ToolbarSpacer />
+			<Button text="Load Data" press="onLoadData"></Button>
+			<Button text="Save" press="onSave"></Button>
+			<Button text="Change" press="onChange"></Button>
+			<Button text="Delete" press="onDelete"></Button>
+			<ToolbarSpacer />
+		</Toolbar>
+
+		<f:SimpleForm id="idSimple" editable="true"
+			layout="ResponsiveGridLayout" title="Employee Form" labelSpanXL="3"
+			labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false"
+			emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0"
+			columnsXL="1" columnsL="1" columnsM="1"
+			singleContainerFullSize="false" >
+			<f:content>
+				<Label text="Employee ID" />
+				<Input id="name" value="{/postPayload/id}" />
+				<Label text="First Name/Last Name" />
+				<Input value="{/postPayload/firstName}">
+				</Input>
+				<Input value="{/postPayload/lastName}">
+					<layoutData>
+						<l:GridData span="XL1 L2 M2 S4" />
+					</layoutData>
+				</Input>
+				<Label text="Email" />
+				<Input value="{/postPayload/emailId}">
+					<layoutData>
+						<l:GridData span="XL1 L2 M2 S4" />
+					</layoutData>
+				</Input>
+				<Label text="Company Name" />
+				<Input value="{/postPayload/companyName}">
+					<layoutData>
+						<l:GridData span="XL1 L2 M2 S4" />
+					</layoutData>
+				</Input>
+				<Label text="Years of Exp" />
+				<Input value="{/postPayload/yearExp}">
+					<layoutData>
+						<l:GridData span="XL1 L2 M2 S4" />
+					</layoutData>
+				</Input>
+			</f:content>
+		</f:SimpleForm>
+
+		<t:Table id="idTable" selectionMode="Single" rowSelectionChange="onSelect">
+			<t:columns>
+				<t:Column>
+					<t:label>
+						<Text text="Employee ID"></Text>
+					</t:label>
+					<t:template>
+							<Text text="{id}"></Text>
+					</t:template>
+				</t:Column>
+				<t:Column>
+					<t:label>
+						<Text text="Name" />
+					</t:label>
+					<t:template>
+						<Text text="{firstName} {lastName}"></Text>
+					</t:template>
+				</t:Column>
+				<t:Column>
+					<t:label text="Email">
+						<Text text="Email" />
+					</t:label>
+					<t:template>
+						<Text text="{emailId}"></Text>
+					</t:template>
+				</t:Column>
+				<t:Column>
+					<t:label text="Company Name">
+						<Text text="Company Name" />
+					</t:label>
+					<t:template>
+						<Text text="{companyName}"></Text>
+					</t:template>
+				</t:Column>
+				<t:Column>
+					<t:label text="Years of Experience">
+						<Text text="Years of Experience" />
+					</t:label>
+					<t:template>
+						<Text text="{yearExp}"></Text>
+					</t:template>
+				</t:Column>
+			</t:columns>
+		</t:Table>
+	</Page>
+</mvc:View>
